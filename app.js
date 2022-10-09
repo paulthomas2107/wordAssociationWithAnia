@@ -1,6 +1,8 @@
 const scoreDisplay = document.getElementById('score-display');
 const questionDisplay = document.getElementById('question-display');
 
+// Caitlin1800
+
 const questions = [
   {
     quiz: ['value', 'estimate', 'evaluate'],
