@@ -31,6 +31,7 @@ const questions = [
 
 let score = 0;
 scoreDisplay.textContent = score;
+let clicked = [];
 
 function populateQuestions() {
   questions.forEach((question) => {
@@ -57,22 +58,48 @@ function populateQuestions() {
       questionButton.textContent = option;
       questionButtons.append(questionButton);
       questionButton.addEventListener('click', () =>
-        checkAnswer(option, optionIndex + 1, question.correct)
+        checkAnswer(
+          questionButton,
+          answerDisplay,
+          option,
+          optionIndex + 1,
+          question.correct
+        )
       );
     });
 
+    const answerDisplay = document.createElement('div');
+    answerDisplay.classList.add('answer-display');
+    questionBox.append(answerDisplay);
     questionDisplay.append(questionBox);
   });
 }
 
-function checkAnswer(option, optionIndex, correctAnswer) {
+function checkAnswer(
+  questionButton,
+  answerDisplay,
+  option,
+  optionIndex,
+  correctAnswer
+) {
   if (optionIndex === correctAnswer) {
     score++;
     scoreDisplay.textContent = score;
+    addResult(answerDisplay, 'Correct...!', 'correct');
   } else {
     score--;
     scoreDisplay.textContent = score;
+    addResult(answerDisplay, 'Incorrect...!', 'wrong');
   }
+
+  clicked.push(option);
+  questionButton.disabled = clicked.includes(option);
+}
+
+function addResult(answerDisplay, answer, answerType) {
+  answerDisplay.textContent = '';
+  answerDisplay.textContent = answer;
+  answerDisplay.classList.add(answerType);
 }
 
 populateQuestions();

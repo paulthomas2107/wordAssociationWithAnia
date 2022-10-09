@@ -3,7 +3,9 @@
     display: flex;
     justify-content: center;
     text-align: center;
-     padding: 100px;
+    padding: 100px;
+    background-color: rgb(75, 134, 111);
+    border-radius: 10px;
 }
 
 .questions {
@@ -60,4 +62,20 @@
 .question-button:disabled {
     background-color: rgb(121, 121, 121);
     color: rgb(136, 134, 134);
+}
+
+.answer-display {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center ;
+   
+}
+
+
+.answer-display.correct {
+    color: rgb(211, 211, 117);
+}
+.answer-display.wrong {
+    color: rgb(211, 134, 117);
 }
