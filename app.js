@@ -57,7 +57,7 @@ function populateQuestions() {
       questionButton.textContent = option;
       questionButtons.append(questionButton);
       questionButton.addEventListener('click', () =>
-        checkAnswer(option, optionIndex, question.correct)
+        checkAnswer(option, optionIndex + 1, question.correct)
       );
     });
 
@@ -65,10 +65,14 @@ function populateQuestions() {
   });
 }
 
-function checkAnswer(option, optionIndex, correctInd) {
-  console.log('option', option);
-  console.log('option index', optionIndex);
-  console.log('Correct ', correctInd);
+function checkAnswer(option, optionIndex, correctAnswer) {
+  if (optionIndex === correctAnswer) {
+    score++;
+    scoreDisplay.textContent = score;
+  } else {
+    score--;
+    scoreDisplay.textContent = score;
+  }
 }
 
 populateQuestions();
